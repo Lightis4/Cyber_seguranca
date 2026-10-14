@@ -1,0 +1,270 @@
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  background-color: #0b132b;
+  color: #cbd5e1;
+  font-family: Inter, Roboto, system-ui, sans-serif;
+  line-height: 1.6;
+  margin: 0;
+  min-height: 100vh;
+}
+
+.cybersecuriti {
+  max-width: 1600px;
+  margin: 0 auto;
+  padding: 40px 42px;
+}
+
+section {
+  margin-bottom: 32px;
+}
+
+strong {
+  color: #ffffff;
+}
+
+a {
+  color: #00ffdd;
+}
+
+h1 {
+  color: #ffffff;
+  font-size: 2.2rem;
+  margin: 0 0 24px;
+}
+
+h2 {
+  color: #ffffff;
+  font-size: 1.5rem;
+  margin: 32px 0 16px;
+}
+
+h3 {
+  font-size: 1.2rem;
+  margin: 24px 0 12px;
+}
+
+ul {
+  padding-left: 24px;
+}
+
+li {
+  margin-bottom: 12px;
+}
+
+code {
+  background-color: #16243d;
+  color: #00ffdd;
+  padding: 2px 8px;
+  border-radius: 6px;
+  font-size: 0.95em;
+}
+
+hr {
+  border: none;
+  border-top: 1px solid #1e3a5f;
+  margin: 40px 0;
+}
+
+img {
+  max-width: 100%;
+  height: auto;
+}
+
+/* ===== BLOCOS COM IMAGENS ===== */
+
+.bloco {
+  display: flex;
+  flex-direction: row-reverse;
+  align-items: center;
+  gap: 48px;
+  margin-bottom: 32px;
+}
+
+.bloco section {
+  flex: 1;
+  min-width: 0;
+  margin-bottom: 0;
+}
+
+.ilustracao,
+.img-codigo {
+  flex: 0 0 55%;
+  width: 55%;
+  max-width: 55%;
+  height: auto;
+  border-radius: 12px;
+}
+
+/* ===== IMAGEM DA ÁREA DE CARREIRAS ===== */
+
+.bloco .img-codigo {
+  display: block;
+  object-fit: contain;
+  border: 1px solid #1e3a5f;
+  box-shadow: 0 0 22px rgba(0, 255, 221, 0.10);
+}
+
+/* ===== ESTATÍSTICAS ===== */
+
+.estatistica {
+  background-color: #111d38;
+  border: 1px solid #1e3a5f;
+  border-radius: 12px;
+  padding: 16px 20px;
+  margin: 24px 0;
+}
+
+.estatistica p {
+  margin: 0;
+  color: #00ffdd;
+}
+
+.valor {
+  font-size: 1.2rem;
+  font-weight: 700;
+  color: #ffffff;
+}
+
+.fonte {
+  font-size: 0.85rem;
+  color: #8b9bb4;
+}
+
+/* ===== DESTAQUES ===== */
+
+.destaque {
+  background-color: #111d38;
+  border-left: 4px solid #00ffdd;
+  border-radius: 8px;
+  padding: 16px 20px;
+  margin: 24px 0;
+}
+
+.destaque p {
+  margin: 0;
+}
+
+/* ===== TAGS ===== */
+
+.tags {
+  list-style: none;
+  padding: 0;
+  margin: 0 0 24px;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+}
+
+.tags li {
+  margin-bottom: 0;
+  padding: 8px 18px;
+  border: 1px solid #1e3a5f;
+  border-radius: 20px;
+  background-color: #16243d;
+  color: #cbd5e1;
+  font-size: 0.9rem;
+  white-space: nowrap;
+}
+
+/* ===== TEXTOS EM DESTAQUE ===== */
+
+.gancho {
+  color: #00ffdd;
+  font-weight: 500;
+}
+
+/* ===== LINKS E BOTÕES ===== */
+
+.cybersecurity__links {
+  display: flex;
+}
+
+.botao,
+.botao2 {
+  background-color: #00ffdd;
+  padding: 6px 14px;
+  border-radius: 8px;
+  color: #000000;
+  font-size: 19px;
+  text-decoration: none;
+  display: inline-block;
+  transition: background-color 0.2s ease;
+}
+
+.botao:hover,
+.botao2:hover {
+  background-color: #00d9bd;
+}
+
+.botao:focus-visible,
+.botao2:focus-visible {
+  outline: 2px solid #ffffff;
+  outline-offset: 3px;
+}
+
+/* ===== RODAPÉ ===== */
+
+footer {
+  max-width: 1600px;
+  margin: 0 auto;
+  padding: 24px 42px;
+  border-top: 1px solid #1e3a5f;
+  font-size: 0.9rem;
+  color: #8b9bb4;
+}
+
+footer p {
+  margin: 8px 0;
+}
+
+/* ===== TABLETS E CELULARES ===== */
+
+@media (max-width: 800px) {
+  .cybersecuriti {
+    padding: 24px 16px;
+  }
+
+  h1 {
+    font-size: 1.7rem;
+  }
+
+  .bloco {
+    flex-direction: column;
+    align-items: stretch;
+    gap: 24px;
+  }
+
+  .bloco section {
+    width: 100%;
+  }
+
+  .ilustracao,
+  .img-codigo {
+    flex: none;
+    width: 100%;
+    max-width: 100%;
+  }
+
+  footer {
+    padding: 24px 16px;
+  }
+
+  .tags li {
+    white-space: normal;
+  }
+}
+
+/* ===== ACESSIBILIDADE ===== */
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    scroll-behavior: auto;
+    transition: none;
+  }
+}
