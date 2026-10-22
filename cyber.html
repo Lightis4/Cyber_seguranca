@@ -42,14 +42,43 @@
                     </div>
                 </div>
 
-                <ul class="tags">
-                    <li>Rede</li>
-                    <li>Aplicativos</li>
-                    <li>Dados</li>
-                    <li>Operacional</li>
-                    <li>Resposta a incidentes</li>
-                    <li>Comportamento humano</li>
-                </ul>
+<p class="introducao-tags">
+    A cibersegurança envolve diferentes áreas que trabalham juntas
+    para proteger sistemas, informações e pessoas contra ameaças digitais.
+    Clique em uma das áreas abaixo para saber mais.
+</p>
+
+<ul class="tags">
+    <li tabindex="0" role="button" aria-expanded="false"
+        data-info="Protege redes e conexões contra invasões, acessos não autorizados e atividades maliciosas.">
+        Segurança de redes
+    </li>
+
+    <li tabindex="0" role="button" aria-expanded="false"
+        data-info="Busca identificar e corrigir vulnerabilidades em sites, sistemas e aplicativos.">
+        Segurança de aplicações
+    </li>
+
+    <li tabindex="0" role="button" aria-expanded="false"
+        data-info="Protege informações contra roubo, vazamento, alteração ou acesso por pessoas não autorizadas.">
+        Proteção de dados
+    </li>
+
+    <li tabindex="0" role="button" aria-expanded="false"
+        data-info="Protege os processos, equipamentos e recursos essenciais para o funcionamento de uma organização.">
+        Segurança operacional
+    </li>
+
+    <li tabindex="0" role="button" aria-expanded="false"
+        data-info="Envolve identificar, conter e investigar incidentes de segurança para reduzir danos e evitar novas ocorrências.">
+        Resposta a incidentes
+    </li>
+
+    <li tabindex="0" role="button" aria-expanded="false"
+        data-info="Ajuda as pessoas a reconhecer golpes, criar hábitos digitais seguros e evitar comportamentos de risco.">
+        Fator humano
+    </li>
+</ul>
 
                 <p class="gancho">→ E quem trabalha protegendo tudo isso na prática?</p>
             </section>
@@ -146,6 +175,9 @@
                 </li>
             </ul>
         </section>
+        <section id="simulacao-phishing">
+    <div id="demonstracao-phishing"></div>
+</section>
 
         <hr>
 
@@ -183,6 +215,104 @@
                     Ferramentas seguras que geram e armazenam senhas complexas e criptografadas para você.
                 </li>
             </ul>
+
+    <div class="verificador-senha">
+         <h2>Teste a força da sua senha</h2>
+
+    <p class="descricao-senha">
+        Descubra se sua senha atende a critérios básicos de segurança.
+        Digite uma senha fictícia para fazer o teste.
+    </p>
+
+    <label for="senha-teste">Digite sua senha:</label>
+
+    <div class="campo-senha">
+        <input
+            type="password"
+            id="senha-teste"
+            placeholder="Digite uma senha fictícia"
+            autocomplete="off"
+            spellcheck="false"
+            aria-describedby="aviso-senha"
+        >
+
+        <button
+            type="button"
+            id="mostrar-senha"
+            aria-pressed="false"
+        >
+            Mostrar
+        </button>
+    </div>
+
+    <p id="aviso-senha" class="aviso-senha">
+        Não utilize sua senha real. Este teste é educativo.
+    </p>
+
+    <div class="resultado-senha" aria-live="polite">
+        <div class="topo-resultado">
+            <span>Força da senha</span>
+            <strong id="nivel-senha">Aguardando teste</strong>
+        </div>
+
+        <div
+            class="barra-senha"
+            role="progressbar"
+            aria-label="Critérios de segurança atendidos"
+            aria-valuemin="0"
+            aria-valuemax="5"
+            aria-valuenow="0"
+            id="progresso-senha"
+        >
+            <div id="preenchimento-senha"></div>
+        </div>
+
+        <p id="mensagem-senha">
+            Digite uma senha fictícia para começar.
+        </p>
+    </div>
+
+    <div class="criterios-senha">
+        <h3>Critérios de segurança</h3>
+
+        <ul>
+            <li id="criterio-tamanho">
+                <span aria-hidden="true">○</span>
+                Pelo menos 12 caracteres
+            </li>
+
+            <li id="criterio-maiuscula">
+                <span aria-hidden="true">○</span>
+                Pelo menos uma letra maiúscula
+            </li>
+
+            <li id="criterio-minuscula">
+                <span aria-hidden="true">○</span>
+                Pelo menos uma letra minúscula
+            </li>
+
+            <li id="criterio-numero">
+                <span aria-hidden="true">○</span>
+                Pelo menos um número
+            </li>
+
+            <li id="criterio-simbolo">
+                <span aria-hidden="true">○</span>
+                Pelo menos um símbolo
+            </li>
+        </ul>
+    </div>
+
+    <button type="button" id="limpar-senha" class="limpar-senha">
+        Limpar teste
+    </button>
+
+    <p class="nota-senha">
+        Esta ferramenta faz uma avaliação básica. Uma senha que atende
+        a todos os critérios ainda pode ser previsível ou já ter sido
+        exposta. Prefira senhas longas, únicas e difíceis de adivinhar.
+     </p>
+    </div>
         </section>
 
         <hr>
@@ -205,5 +335,6 @@
         <p>Golpes digitais no Brasil: relatório "O Estado dos Golpes no Brasil 2026", Global Anti-Scam Alliance (GASA)</p>
     </footer>
 
+    <script src="script.js"></script>
 </body>
 </html>
