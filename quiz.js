@@ -1,7 +1,16 @@
-"use strict";
-const API_URL = "http://localhost:3000";
 
+"use strict";
+
+// ==========================================
+// CONFIGURAÇÕES
+// ==========================================
+
+const API_URL = "https://cyber-seguranca-api.onrender.com";
 const TEMPO_LIMITE = 20;
+
+// ==========================================
+// ELEMENTOS DO HTML
+// ==========================================
 
 const telaInicial = document.getElementById("tela-inicial");
 const telaQuiz = document.getElementById("tela-quiz");
@@ -30,59 +39,49 @@ const resultadoTempo = document.getElementById("resultado-tempo");
 const resultadoStatus = document.getElementById("resultado-status");
 
 // ==========================================
-// VARIÁVEIS DO QUIZ
+// ESTADO DO QUIZ
 // ==========================================
 
 let partidaId = null;
 let nomeParticipante = "";
-
 let perguntaAtual = null;
 
 let pontuacao = 0;
 let tempoRestante = TEMPO_LIMITE;
-
 let intervalo = null;
 
 let respondida = false;
 let requisicaoPendente = false;
-
 let respostaPendente = null;
 
 // ==========================================
-// COMUNICAÇÃO COM O BACKEND
+// COMUNICAÇÃO COM A API PÚBLICA
 // ==========================================
 
 async function chamarAPI(rota, dados = null) {
-
     const opcoes = dados === null
         ? {}
         : {
             method: "POST",
-
             headers: {
                 "Content-Type": "application/json"
             },
-
             body: JSON.stringify(dados)
         };
 
     let resposta;
 
     try {
-
         resposta = await fetch(
             `${API_URL}${rota}`,
             opcoes
         );
-
     } catch (erro) {
-
         console.error("Erro de conexão:", erro);
 
         throw new Error(
-            "Não foi possível conectar ao backend. " +
-            "Verifique se o servidor Node.js está ligado " +
-            "na porta 3000."
+            "Não foi possível conectar ao servidor online. " +
+            "Aguarde alguns instantes e tente novamente."
         );
     }
 
@@ -90,38 +89,30 @@ async function chamarAPI(rota, dados = null) {
         resposta.headers.get("content-type") || "";
 
     if (!tipoConteudo.includes("application/json")) {
-
         const texto = await resposta.text();
 
         console.error(
-            "O servidor retornou uma resposta inesperada:",
+            "Resposta inesperada:",
             texto.slice(0, 300)
         );
 
         throw new Error(
-            "O servidor retornou HTML ou outro conteúdo " +
-            "em vez de JSON. Verifique a URL da API " +
-            "e se a rota existe no server.js."
+            "O servidor retornou um conteúdo inesperado. " +
+            "Verifique a configuração da API."
         );
     }
 
     let resultado;
 
     try {
-
         resultado = await resposta.json();
-
     } catch (erro) {
-
-        console.error("Erro ao interpretar JSON:", erro);
-
         throw new Error(
             "O servidor enviou uma resposta JSON inválida."
         );
     }
 
     if (!resposta.ok) {
-
         throw new Error(
             resultado.mensagem ||
             `Erro HTTP ${resposta.status}.`
@@ -136,7 +127,6 @@ async function chamarAPI(rota, dados = null) {
 // ==========================================
 
 function mostrarTela(tela) {
-
     telaInicial.classList.add("oculto");
     telaQuiz.classList.add("oculto");
     telaResultado.classList.add("oculto");
@@ -149,7 +139,6 @@ function mostrarTela(tela) {
 // ==========================================
 
 function atualizarTempo() {
-
     elementoTempo.textContent = tempoRestante;
 
     const porcentagem =
@@ -164,23 +153,18 @@ function atualizarTempo() {
 }
 
 function pararCronometro() {
-
     if (intervalo !== null) {
-
         clearInterval(intervalo);
-
         intervalo = null;
     }
 }
 
 function iniciarCronometro() {
-
     pararCronometro();
 
     const inicio = performance.now();
 
     intervalo = setInterval(() => {
-
         const segundosPassados = Math.floor(
             (performance.now() - inicio) / 1000
         );
@@ -193,12 +177,9 @@ function iniciarCronometro() {
         atualizarTempo();
 
         if (tempoRestante <= 0) {
-
             pararCronometro();
-
             responder(null);
         }
-
     }, 100);
 }
 
@@ -207,19 +188,13 @@ function iniciarCronometro() {
 // ==========================================
 
 async function iniciarQuiz() {
-
     if (requisicaoPendente) return;
 
     const nome = inputNome.value.trim();
 
     if (nome.length < 2 || nome.length > 30) {
-
-        alert(
-            "Digite um nome entre 2 e 30 caracteres."
-        );
-
+        alert("Digite um nome entre 2 e 30 caracteres.");
         inputNome.focus();
-
         return;
     }
 
@@ -229,43 +204,29 @@ async function iniciarQuiz() {
     btnIniciar.textContent = "Iniciando...";
 
     try {
-
         const dados = await chamarAPI(
             "/api/quiz/iniciar",
-            {
-                nome: nome
-            }
+            { nome }
         );
 
         if (!dados.partidaId || !dados.pergunta) {
-
             throw new Error(
                 "O backend não retornou os dados da partida."
             );
         }
 
         partidaId = dados.partidaId;
-
         nomeParticipante = nome;
-
         pontuacao = dados.pontuacao || 0;
 
         mostrarTela(telaQuiz);
-
         carregarPergunta(dados.pergunta);
-
     } catch (erro) {
-
         console.error("Erro ao iniciar quiz:", erro);
-
         alert(erro.message);
-
     } finally {
-
         requisicaoPendente = false;
-
         btnIniciar.disabled = false;
-
         btnIniciar.textContent = "Iniciar Quiz";
     }
 }
@@ -275,7 +236,6 @@ async function iniciarQuiz() {
 // ==========================================
 
 function carregarPergunta(pergunta) {
-
     pararCronometro();
 
     perguntaAtual = pergunta;
@@ -292,8 +252,7 @@ function carregarPergunta(pergunta) {
     elementoPontuacao.textContent =
         `Pontos: ${pontuacao}`;
 
-    elementoPergunta.textContent =
-        pergunta.pergunta;
+    elementoPergunta.textContent = pergunta.pergunta;
 
     elementoMensagem.textContent = "";
     elementoMensagem.className = "";
@@ -303,29 +262,21 @@ function carregarPergunta(pergunta) {
 
     elementoAlternativas.innerHTML = "";
 
-    pergunta.alternativas.forEach(
-        (alternativa, indice) => {
+    pergunta.alternativas.forEach((alternativa, indice) => {
+        const botao = document.createElement("button");
 
-            const botao = document.createElement("button");
+        botao.type = "button";
+        botao.className = "alternativa";
+        botao.textContent = alternativa;
 
-            botao.type = "button";
+        botao.addEventListener("click", () => {
+            responder(indice);
+        });
 
-            botao.className = "alternativa";
-
-            botao.textContent = alternativa;
-
-            botao.addEventListener("click", () => {
-
-                responder(indice);
-
-            });
-
-            elementoAlternativas.appendChild(botao);
-        }
-    );
+        elementoAlternativas.appendChild(botao);
+    });
 
     atualizarTempo();
-
     iniciarCronometro();
 }
 
@@ -334,11 +285,9 @@ function carregarPergunta(pergunta) {
 // ==========================================
 
 async function responder(indiceEscolhido) {
-
     if (respondida || requisicaoPendente) return;
 
     requisicaoPendente = true;
-
     respostaPendente = indiceEscolhido;
 
     pararCronometro();
@@ -349,7 +298,6 @@ async function responder(indiceEscolhido) {
         );
 
     botoes.forEach(botao => {
-
         botao.disabled = true;
     });
 
@@ -357,43 +305,36 @@ async function responder(indiceEscolhido) {
         "Verificando resposta...";
 
     try {
-
         const resultado = await chamarAPI(
             "/api/quiz/responder",
             {
-                partidaId: partidaId,
+                partidaId,
                 resposta: indiceEscolhido
             }
         );
 
         respondida = true;
-
         pontuacao = resultado.pontuacao;
 
         elementoPontuacao.textContent =
             `Pontos: ${pontuacao}`;
 
         if (resultado.correta) {
-
             elementoMensagem.textContent =
                 `Resposta correta! +${resultado.pontosGanhos} pontos.`;
 
             elementoMensagem.className =
                 "mensagem-correta";
-
         } else if (
             resultado.tempoEsgotado ||
             indiceEscolhido === null
         ) {
-
             elementoMensagem.textContent =
                 "Tempo esgotado!";
 
             elementoMensagem.className =
                 "mensagem-errada";
-
         } else {
-
             elementoMensagem.textContent =
                 "Resposta incorreta!";
 
@@ -402,13 +343,9 @@ async function responder(indiceEscolhido) {
         }
 
         botoes.forEach((botao, indice) => {
-
             if (indice === resultado.corretaIndice) {
-
                 botao.classList.add("correta");
-
             } else if (indice === indiceEscolhido) {
-
                 botao.classList.add("errada");
             }
         });
@@ -418,11 +355,8 @@ async function responder(indiceEscolhido) {
             : "Próxima pergunta";
 
         btnProxima.classList.remove("oculto");
-
         respostaPendente = null;
-
     } catch (erro) {
-
         console.error(
             "Erro ao enviar resposta:",
             erro
@@ -434,34 +368,21 @@ async function responder(indiceEscolhido) {
         elementoMensagem.className =
             "mensagem-errada";
 
-        // Permite reenviar a mesma resposta,
-        // sem contabilizar pontos duas vezes.
-        const botaoTentar =
-            document.createElement("button");
+        // Mantém a possibilidade de tentar novamente.
+        const botaoTentar = document.createElement("button");
 
         botaoTentar.type = "button";
-
         botaoTentar.className = "botao";
-
         botaoTentar.textContent =
             "Tentar enviar novamente";
 
-        botaoTentar.addEventListener(
-            "click",
-            () => {
+        botaoTentar.addEventListener("click", () => {
+            botaoTentar.remove();
+            responder(respostaPendente);
+        });
 
-                botaoTentar.remove();
-
-                responder(respostaPendente);
-            }
-        );
-
-        elementoAlternativas.appendChild(
-            botaoTentar
-        );
-
+        elementoAlternativas.appendChild(botaoTentar);
     } finally {
-
         requisicaoPendente = false;
     }
 }
@@ -471,42 +392,28 @@ async function responder(indiceEscolhido) {
 // ==========================================
 
 async function proximaPergunta() {
-
     if (!respondida || requisicaoPendente) return;
 
     requisicaoPendente = true;
-
     btnProxima.disabled = true;
 
     const ultimaPergunta =
         perguntaAtual.numero === perguntaAtual.total;
 
     try {
-
         if (ultimaPergunta) {
-
             await finalizarQuiz();
-
         } else {
-
             const dados = await chamarAPI(
                 "/api/quiz/proxima",
-                {
-                    partidaId: partidaId
-                }
+                { partidaId }
             );
 
             pontuacao = dados.pontuacao;
-
             carregarPergunta(dados.pergunta);
         }
-
     } catch (erro) {
-
-        console.error(
-            "Erro ao avançar:",
-            erro
-        );
+        console.error("Erro ao avançar:", erro);
 
         elementoMensagem.textContent =
             `Erro: ${erro.message}`;
@@ -519,19 +426,16 @@ async function proximaPergunta() {
         btnProxima.textContent = ultimaPergunta
             ? "Tentar salvar novamente"
             : "Tentar próxima pergunta";
-
     } finally {
-
         requisicaoPendente = false;
     }
 }
 
 // ==========================================
-// FINALIZAR QUIZ
+// FINALIZAR E SALVAR NO NEON
 // ==========================================
 
 async function finalizarQuiz() {
-
     pararCronometro();
 
     btnProxima.textContent =
@@ -539,9 +443,7 @@ async function finalizarQuiz() {
 
     const resultado = await chamarAPI(
         "/api/quiz/finalizar",
-        {
-            partidaId: partidaId
-        }
+        { partidaId }
     );
 
     mostrarTela(telaResultado);
@@ -569,17 +471,13 @@ async function finalizarQuiz() {
 // ==========================================
 
 function reiniciarQuiz() {
-
     pararCronometro();
 
     partidaId = null;
-
     nomeParticipante = "";
-
     perguntaAtual = null;
 
     pontuacao = 0;
-
     tempoRestante = TEMPO_LIMITE;
 
     respondida = false;
@@ -587,9 +485,7 @@ function reiniciarQuiz() {
     respostaPendente = null;
 
     btnProxima.disabled = false;
-
-    btnProxima.textContent =
-        "Próxima pergunta";
+    btnProxima.textContent = "Próxima pergunta";
 
     elementoMensagem.textContent = "";
 

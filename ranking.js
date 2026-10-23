@@ -1,10 +1,11 @@
+
 "use strict";
 
 // ==========================================
 // CONFIGURAÇÕES DA API
 // ==========================================
 
-const API_URL = "http://localhost:3000";
+const API_URL = "https://cyber-seguranca-api.onrender.com";
 
 // ==========================================
 // ELEMENTOS DO HTML
@@ -33,7 +34,6 @@ const btnAtualizar =
 // ==========================================
 
 function formatarData(dataOriginal) {
-
     if (!dataOriginal) {
         return "-";
     }
@@ -56,13 +56,10 @@ function formatarData(dataOriginal) {
 // ==========================================
 
 function limparRanking() {
-
     corpoRanking.innerHTML = "";
 
     totalJogadores.textContent = "0";
-
     maiorPontuacao.textContent = "0";
-
     melhorJogador.textContent = "---";
 }
 
@@ -71,35 +68,26 @@ function limparRanking() {
 // ==========================================
 
 function atualizarEstatisticas(ranking) {
-
     totalJogadores.textContent = ranking.length;
 
     if (ranking.length === 0) {
-
         maiorPontuacao.textContent = "0";
-
         melhorJogador.textContent = "---";
-
         return;
     }
 
     const melhor = ranking.reduce(
         (atual, participante) => {
-
             return Number(participante.pontuacao) >
                 Number(atual.pontuacao)
                 ? participante
                 : atual;
-
         },
         ranking[0]
     );
 
-    maiorPontuacao.textContent =
-        melhor.pontuacao;
-
-    melhorJogador.textContent =
-        melhor.nome;
+    maiorPontuacao.textContent = melhor.pontuacao;
+    melhorJogador.textContent = melhor.nome;
 }
 
 // ==========================================
@@ -107,9 +95,9 @@ function atualizarEstatisticas(ranking) {
 // ==========================================
 
 function criarCelula(linha, valor) {
-
     const celula = document.createElement("td");
 
+    // textContent evita interpretar nomes como HTML.
     celula.textContent = String(valor);
 
     linha.appendChild(celula);
@@ -120,11 +108,9 @@ function criarCelula(linha, valor) {
 // ==========================================
 
 function preencherTabela(ranking) {
-
     corpoRanking.innerHTML = "";
 
     ranking.forEach((participante, indice) => {
-
         const linha = document.createElement("tr");
 
         const posicao =
@@ -148,63 +134,28 @@ function preencherTabela(ranking) {
         const data =
             formatarData(participante.criado_em);
 
-        // POSIÇÃO
-
-        criarCelula(
-            linha,
-            `${posicao}º`
-        );
-
-        // NOME
-
-        criarCelula(
-            linha,
-            nome
-        );
-
-        // PONTUAÇÃO
-
-        criarCelula(
-            linha,
-            pontos
-        );
-
-        // ACERTOS
-
+        criarCelula(linha, `${posicao}º`);
+        criarCelula(linha, nome);
+        criarCelula(linha, pontos);
         criarCelula(
             linha,
             `${acertos} de ${totalPerguntas}`
         );
-
-        // TEMPO
-
-        criarCelula(
-            linha,
-            `${tempo}s`
-        );
-
-        // DATA
-
-        criarCelula(
-            linha,
-            data
-        );
+        criarCelula(linha, `${tempo}s`);
+        criarCelula(linha, data);
 
         corpoRanking.appendChild(linha);
-
     });
 }
 
 // ==========================================
-// CONSULTAR API DO NEON
+// CONSULTAR RANKING NA API PÚBLICA
 // ==========================================
 
 async function buscarRanking() {
-
     let resposta;
 
     try {
-
         resposta = await fetch(
             `${API_URL}/api/ranking`,
             {
@@ -212,17 +163,16 @@ async function buscarRanking() {
                 cache: "no-store"
             }
         );
-
     } catch (erro) {
+        console.error("Erro de conexão:", erro);
 
         throw new Error(
-            "Não foi possível conectar ao backend. " +
-            "Verifique se o Node.js está funcionando."
+            "Não foi possível conectar ao servidor online. " +
+            "Aguarde alguns instantes e tente novamente."
         );
     }
 
     if (!resposta.ok) {
-
         throw new Error(
             `Erro HTTP ${resposta.status} ao consultar ranking.`
         );
@@ -232,17 +182,15 @@ async function buscarRanking() {
         resposta.headers.get("content-type") || "";
 
     if (!tipoConteudo.includes("application/json")) {
-
         throw new Error(
             "A API não retornou JSON. " +
-            "Verifique o endereço do backend."
+            "Verifique o endereço do servidor."
         );
     }
 
     const dados = await resposta.json();
 
     if (!Array.isArray(dados.ranking)) {
-
         throw new Error(
             "O servidor retornou um ranking inválido."
         );
@@ -256,32 +204,25 @@ async function buscarRanking() {
 // ==========================================
 
 async function carregarRanking() {
-
     btnAtualizar.disabled = true;
-
-    btnAtualizar.textContent =
-        "Atualizando...";
+    btnAtualizar.textContent = "Atualizando...";
 
     mensagemRanking.textContent =
-        "Carregando ranking...";
+        "Carregando ranking online...";
 
     try {
-
         const ranking = await buscarRanking();
 
         limparRanking();
 
         if (ranking.length === 0) {
-
             mensagemRanking.textContent =
                 "Ainda não há participantes. " +
                 "Seja o primeiro a jogar!";
-
             return;
         }
 
         preencherTabela(ranking);
-
         atualizarEstatisticas(ranking);
 
         mensagemRanking.textContent =
@@ -291,25 +232,17 @@ async function carregarRanking() {
             "Ranking carregado com sucesso:",
             ranking
         );
-
     } catch (erro) {
-
         console.error(
             "Erro ao carregar ranking:",
             erro
         );
 
         limparRanking();
-
-        mensagemRanking.textContent =
-            erro.message;
-
+        mensagemRanking.textContent = erro.message;
     } finally {
-
         btnAtualizar.disabled = false;
-
-        btnAtualizar.textContent =
-            "Atualizar ranking";
+        btnAtualizar.textContent = "Atualizar ranking";
     }
 }
 
@@ -322,6 +255,5 @@ btnAtualizar.addEventListener(
     carregarRanking
 );
 
-// Carrega automaticamente ao abrir a página
-
+// Carrega automaticamente ao abrir a página.
 carregarRanking();
