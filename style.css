@@ -1,0 +1,804 @@
+
+/* =========================================
+   CYBER SEGURANÇA - ESTILO PRINCIPAL
+   ========================================= */
+
+* {
+    box-sizing: border-box;
+}
+
+body {
+    background-color: #0b132b;
+    color: #cbd5e1;
+    font-family: Inter, Roboto, system-ui, sans-serif;
+    line-height: 1.6;
+    margin: 0;
+    min-height: 100vh;
+}
+
+.cybersecuriti {
+    max-width: 1600px;
+    margin: 0 auto;
+    padding: 40px 42px;
+}
+
+section {
+    margin-bottom: 32px;
+}
+
+strong {
+    color: #ffffff;
+}
+
+a {
+    color: #00ffdd;
+}
+
+h1 {
+    color: #ffffff;
+    font-size: 2.2rem;
+    margin: 0 0 24px;
+}
+
+h2 {
+    color: #ffffff;
+    font-size: 1.5rem;
+    margin: 32px 0 16px;
+}
+
+h3 {
+    font-size: 1.2rem;
+    margin: 24px 0 12px;
+}
+
+ul {
+    padding-left: 24px;
+}
+
+li {
+    margin-bottom: 12px;
+}
+
+code {
+    background-color: #16243d;
+    color: #00ffdd;
+    padding: 2px 8px;
+    border-radius: 6px;
+    font-size: 0.95em;
+}
+
+hr {
+    border: none;
+    border-top: 1px solid #1e3a5f;
+    margin: 40px 0;
+}
+
+img {
+    max-width: 100%;
+    height: auto;
+}
+
+/* =========================================
+   BLOCOS COM IMAGENS
+   ========================================= */
+
+.bloco {
+    display: flex;
+    flex-direction: row-reverse;
+    align-items: center;
+    gap: 48px;
+    margin-bottom: 32px;
+}
+
+.bloco section {
+    flex: 1;
+    min-width: 0;
+    margin-bottom: 0;
+}
+
+.ilustracao,
+.img-codigo {
+    flex: 0 0 55%;
+    width: 55%;
+    max-width: 55%;
+    height: auto;
+    border-radius: 12px;
+}
+
+.bloco .img-codigo {
+    display: block;
+    object-fit: contain;
+    border: 1px solid #1e3a5f;
+    box-shadow: 0 0 22px rgba(0, 255, 221, 0.10);
+}
+
+/* =========================================
+   ESTATÍSTICAS
+   ========================================= */
+
+.estatistica {
+    background-color: #111d38;
+    border: 1px solid #1e3a5f;
+    border-radius: 12px;
+    padding: 16px 20px;
+    margin: 24px 0;
+}
+
+.estatistica p {
+    margin: 0;
+    color: #00ffdd;
+}
+
+.valor {
+    font-size: 1.2rem;
+    font-weight: 700;
+    color: #ffffff;
+}
+
+.fonte {
+    font-size: 0.85rem;
+    color: #8b9bb4;
+}
+
+/* =========================================
+   DESTAQUES
+   ========================================= */
+
+.destaque {
+    background-color: #111d38;
+    border-left: 4px solid #00ffdd;
+    border-radius: 8px;
+    padding: 16px 20px;
+    margin: 24px 0;
+}
+
+.destaque p {
+    margin: 0;
+}
+
+/* =========================================
+   TAGS INTERATIVAS
+   ========================================= */
+
+.tags {
+    list-style: none;
+    padding: 0;
+    margin: 0 0 24px;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 12px;
+}
+
+.tags li {
+    margin-bottom: 0;
+    padding: 8px 18px;
+    border: 1px solid #1e3a5f;
+    border-radius: 20px;
+    background-color: #16243d;
+    color: #cbd5e1;
+    font-size: 0.9rem;
+    white-space: nowrap;
+}
+
+/* =========================================
+   TEXTOS EM DESTAQUE
+   ========================================= */
+
+.gancho {
+    color: #00ffdd;
+    font-weight: 500;
+}
+
+/* =========================================
+   LINKS E BOTÕES
+   ========================================= */
+
+.cybersecurity__links {
+    display: flex;
+}
+
+.botao,
+.botao2 {
+    background-color: #00ffdd;
+    padding: 6px 14px;
+    border-radius: 8px;
+    color: #000000;
+    font-size: 19px;
+    text-decoration: none;
+    display: inline-block;
+    transition: background-color 0.2s ease;
+}
+
+.botao:hover,
+.botao2:hover {
+    background-color: #00d9bd;
+}
+
+.botao:focus-visible,
+.botao2:focus-visible {
+    outline: 2px solid #ffffff;
+    outline-offset: 3px;
+}
+
+/* =========================================
+   RODAPÉ
+   ========================================= */
+
+footer {
+    max-width: 1600px;
+    margin: 0 auto;
+    padding: 24px 42px;
+    border-top: 1px solid #1e3a5f;
+    font-size: 0.9rem;
+    color: #8b9bb4;
+}
+
+footer p {
+    margin: 8px 0;
+}
+
+/* =========================================
+   RESPONSIVIDADE GERAL
+   ========================================= */
+
+@media (max-width: 800px) {
+
+    .cybersecuriti {
+        padding: 24px 16px;
+    }
+
+    h1 {
+        font-size: 1.7rem;
+    }
+
+    .bloco {
+        flex-direction: column;
+        align-items: stretch;
+        gap: 24px;
+    }
+
+    .bloco section {
+        width: 100%;
+    }
+
+    .ilustracao,
+    .img-codigo {
+        flex: none;
+        width: 100%;
+        max-width: 100%;
+    }
+
+    footer {
+        padding: 24px 16px;
+    }
+
+    .tags li {
+        white-space: normal;
+    }
+}
+
+/* =========================================
+   ACESSIBILIDADE
+   ========================================= */
+
+@media (prefers-reduced-motion: reduce) {
+
+    *,
+    *::before,
+    *::after {
+        scroll-behavior: auto;
+        transition: none;
+    }
+}
+
+/* =========================================
+   VERIFICADOR DE SENHAS
+   ========================================= */
+
+.verificador-senha {
+    max-width: 650px;
+    margin: 35px auto;
+    padding: 28px;
+    background: #111c36;
+    color: #cbd5e1;
+    border: 1px solid #243653;
+    border-radius: 14px;
+    box-sizing: border-box;
+}
+
+.verificador-senha h2 {
+    margin-top: 0;
+    color: #00ffdd;
+    font-size: 1.6rem;
+}
+
+.verificador-senha .descricao-senha {
+    line-height: 1.6;
+    margin-bottom: 24px;
+}
+
+.verificador-senha label {
+    display: block;
+    margin-bottom: 9px;
+    font-weight: 600;
+}
+
+.campo-senha {
+    display: flex;
+    gap: 10px;
+    align-items: stretch;
+}
+
+.campo-senha input {
+    flex: 1;
+    min-width: 0;
+    padding: 13px;
+    background: #0b132b;
+    color: #cbd5e1;
+    border: 1px solid #40516d;
+    border-radius: 7px;
+    font-size: 1rem;
+}
+
+.campo-senha input:focus {
+    outline: 2px solid #00ffdd;
+    outline-offset: 2px;
+}
+
+#mostrar-senha,
+.limpar-senha {
+    padding: 11px 15px;
+    color: #00ffdd;
+    background: transparent;
+    border: 1px solid #00ffdd;
+    border-radius: 7px;
+    cursor: pointer;
+    font-weight: 600;
+    transition: background 0.2s ease,
+                transform 0.2s ease;
+}
+
+#mostrar-senha:hover,
+.limpar-senha:hover {
+    background: #1a2c46;
+    transform: translateY(-1px);
+}
+
+.aviso-senha,
+.nota-senha {
+    color: #94a3b8;
+    font-size: 0.85rem;
+    line-height: 1.6;
+}
+
+.resultado-senha {
+    margin-top: 25px;
+    padding: 18px;
+    background: #0b132b;
+    border-radius: 9px;
+}
+
+.topo-resultado {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 12px;
+    flex-wrap: wrap;
+}
+
+#nivel-senha {
+    color: #00ffdd;
+}
+
+.barra-senha {
+    height: 8px;
+    margin-top: 14px;
+    background: #29364d;
+    border-radius: 20px;
+    overflow: hidden;
+}
+
+#preenchimento-senha {
+    width: 0%;
+    height: 100%;
+    background: #ef4444;
+    border-radius: 20px;
+    transition: width 0.25s ease,
+                background 0.25s ease;
+}
+
+#mensagem-senha {
+    margin-bottom: 0;
+    font-size: 0.9rem;
+    line-height: 1.5;
+}
+
+.criterios-senha {
+    margin-top: 25px;
+}
+
+.criterios-senha h3 {
+    color: #00ffdd;
+    font-size: 1.1rem;
+}
+
+.criterios-senha ul {
+    padding: 0;
+    list-style: none;
+}
+
+.criterios-senha li {
+    display: flex;
+    align-items: flex-start;
+    gap: 10px;
+    margin: 13px 0;
+    line-height: 1.5;
+    transition: color 0.2s ease;
+}
+
+.criterios-senha li span {
+    color: #94a3b8;
+    font-weight: 700;
+}
+
+.criterios-senha li.atendido {
+    color: #00ffdd;
+}
+
+.criterios-senha li.atendido span {
+    color: #00ffdd;
+}
+
+.nota-senha {
+    margin-top: 24px;
+    padding-top: 16px;
+    border-top: 1px solid #29364d;
+}
+
+/* RESPONSIVIDADE DO VERIFICADOR */
+
+@media (max-width: 480px) {
+
+    .verificador-senha {
+        padding: 19px;
+        margin: 24px auto;
+    }
+
+    .verificador-senha h2 {
+        font-size: 1.35rem;
+    }
+
+    .campo-senha {
+        flex-direction: column;
+    }
+
+    #mostrar-senha {
+        align-self: flex-start;
+    }
+
+    .topo-resultado {
+        align-items: flex-start;
+        flex-direction: column;
+    }
+}
+
+/* =========================================
+   SIMULAÇÃO DE PHISHING
+   ========================================= */
+
+#simulacao-phishing {
+    width: 100%;
+    padding: 40px 20px;
+    color: #cbd5e1;
+}
+
+.phishing-container {
+    max-width: 760px;
+    margin: 0 auto;
+    padding: 28px;
+    border: 1px solid #263858;
+    border-radius: 16px;
+    background: #111c35;
+}
+
+.phishing-container h2 {
+    color: #00ffdd;
+    margin-top: 0;
+}
+
+.phishing-intro {
+    line-height: 1.7;
+}
+
+.phishing-email {
+    margin: 24px 0;
+    padding: 22px;
+    border: 1px solid #394966;
+    border-radius: 12px;
+    background: #0b132b;
+}
+
+.phishing-email-topo {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    margin-bottom: 20px;
+}
+
+.phishing-logo {
+    color: #e50914;
+    font-size: 23px;
+    font-weight: 900;
+    letter-spacing: 1px;
+}
+
+.phishing-etiqueta {
+    color: #94a3b8;
+    font-size: 12px;
+}
+
+.phishing-assunto {
+    margin-bottom: 8px;
+    color: #f1f5f9;
+    font-size: 18px;
+    font-weight: bold;
+}
+
+.phishing-mensagem {
+    line-height: 1.7;
+    overflow-wrap: anywhere;
+}
+
+.phishing-link-falso {
+    display: inline-block;
+    margin-top: 12px;
+    padding: 10px;
+    border: 1px dashed #fb7185;
+    border-radius: 6px;
+    color: #fda4af;
+    overflow-wrap: anywhere;
+}
+
+.phishing-link-falso[hidden] {
+    display: none;
+}
+
+.phishing-opcoes {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 10px;
+    margin: 20px 0;
+}
+
+.phishing-opcoes button,
+.phishing-proximo {
+    padding: 12px;
+    border: 1px solid #00bfa8;
+    border-radius: 8px;
+    background: transparent;
+    color: #00ffdd;
+    cursor: pointer;
+    font: inherit;
+    transition: background 0.2s, color 0.2s;
+}
+
+.phishing-opcoes button:hover,
+.phishing-proximo:hover {
+    background: #00ffdd;
+    color: #0b132b;
+}
+
+.phishing-opcoes button:disabled {
+    cursor: default;
+    opacity: 0.65;
+}
+
+.phishing-feedback {
+    padding: 16px;
+    border-radius: 8px;
+    background: #0b132b;
+    line-height: 1.7;
+}
+
+.phishing-feedback[hidden] {
+    display: none;
+}
+
+.phishing-feedback h3 {
+    margin-top: 0;
+    color: #00ffdd;
+}
+
+.phishing-rodape {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: space-between;
+    gap: 12px;
+    margin-top: 20px;
+}
+
+.phishing-pontuacao {
+    color: #cbd5e1;
+    font-weight: bold;
+}
+
+.phishing-proximo {
+    background: #00ffdd;
+    color: #0b132b;
+    font-weight: bold;
+}
+
+.phishing-proximo:disabled {
+    cursor: default;
+    opacity: 0.45;
+}
+
+.phishing-aviso {
+    color: #94a3b8;
+    font-size: 13px;
+    line-height: 1.6;
+}
+
+/* RESPONSIVIDADE DO PHISHING */
+
+@media (max-width: 520px) {
+
+    #simulacao-phishing {
+        padding: 24px 0;
+    }
+
+    .phishing-container {
+        padding: 18px;
+    }
+
+    .phishing-opcoes {
+        grid-template-columns: 1fr;
+    }
+
+    .phishing-email {
+        padding: 16px;
+    }
+}
+
+/* =========================================
+   SEÇÃO FINAL DO QUIZ
+   ========================================= */
+
+#quiz-final {
+    box-sizing: border-box;
+    width: min(1100px, 100%);
+    margin: 50px auto;
+    padding: 44px;
+    background: #102238;
+    border: 1px solid #23435a;
+    border-radius: 18px;
+}
+
+#quiz-final h1 {
+    color: #ffffff;
+    font-size: clamp(1.7rem, 3vw, 2.2rem);
+    margin: 0 0 18px;
+}
+
+#quiz-final p {
+    color: #cbd5e1;
+    font-size: 1.1rem;
+    line-height: 1.75;
+}
+
+#quiz-final .gancho {
+    color: #00ffdd;
+}
+
+/* CONTAINER DOS BOTÕES */
+
+#quiz-final .chamada-quiz {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    gap: 14px;
+    margin: 30px 0 0;
+}
+
+/* ESTILO COMPARTILHADO DOS BOTÕES */
+
+#quiz-final .chamada-quiz a {
+    box-sizing: border-box;
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 50px;
+    padding: 14px 24px;
+    border-radius: 10px;
+    font-size: 1rem;
+    font-weight: 700;
+    text-decoration: none;
+    transition:
+        background 0.2s ease,
+        border-color 0.2s ease,
+        color 0.2s ease,
+        transform 0.2s ease;
+}
+
+/* BOTÃO PRINCIPAL */
+
+#quiz-final .chamada-botao {
+    background: #00dfb3;
+    color: #071525;
+    border: 1px solid #00dfb3;
+}
+
+#quiz-final .chamada-botao:hover {
+    background: #00b995;
+    border-color: #00b995;
+    transform: translateY(-3px);
+}
+
+/* BOTÕES SECUNDÁRIOS */
+
+#quiz-final .chamada-link {
+    background: #152e46;
+    color: #ffffff;
+    border: 1px solid #31536b;
+}
+
+#quiz-final .chamada-link:hover {
+    background: #183850;
+    border-color: #00dfb3;
+    color: #00dfb3;
+    transform: translateY(-3px);
+}
+
+/* NAVEGAÇÃO POR TECLADO */
+
+#quiz-final .chamada-quiz a:focus-visible {
+    outline: 3px solid #ffffff;
+    outline-offset: 3px;
+}
+
+/* =========================================
+   QUIZ RESPONSIVO
+   ========================================= */
+
+@media (max-width: 600px) {
+
+    #quiz-final {
+        width: 100%;
+        padding: 26px 18px;
+        margin: 30px auto;
+    }
+
+    #quiz-final h1 {
+        font-size: 1.7rem;
+    }
+
+    #quiz-final p {
+        font-size: 1rem;
+    }
+
+    #quiz-final .chamada-quiz {
+        flex-direction: column;
+        align-items: stretch;
+    }
+
+    #quiz-final .chamada-quiz a {
+        width: 100%;
+    }
+}
+
+/* =========================================
+   REDUÇÃO DE ANIMAÇÕES
+   ========================================= */
+
+@media (prefers-reduced-motion: reduce) {
+
+    #quiz-final .chamada-quiz a {
+        transition: none;
+    }
+
+    #quiz-final .chamada-quiz a:hover {
+        transform: none;
+    }
+}

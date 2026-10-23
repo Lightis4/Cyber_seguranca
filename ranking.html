@@ -1,0 +1,192 @@
+
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
+
+    <title>Ranking | Cyber Segurança</title>
+
+    <!-- CSS do Quiz e Ranking -->
+    <link rel="stylesheet" href="extras.css">
+
+    <!-- JavaScript do Ranking -->
+    <script src="ranking.js" defer></script>
+</head>
+
+<body>
+
+    <!-- CABEÇALHO -->
+    <header class="cabecalho">
+
+        <h1>Cyber Segurança</h1>
+
+        <nav aria-label="Navegação principal">
+
+            <a href="cyber.html">
+                Início
+            </a>
+
+            <a href="quiz.html">
+                Quiz
+            </a>
+
+            <a
+                href="ranking.html"
+                class="ativo"
+                aria-current="page"
+            >
+                Ranking
+            </a>
+
+            <a href="qrcode.html">
+                QR Code
+            </a>
+
+        </nav>
+
+    </header>
+
+    <!-- CONTEÚDO PRINCIPAL -->
+    <main class="container">
+
+        <section class="painel">
+
+            <h2>Ranking de Cibersegurança</h2>
+
+            <p>
+                Confira os melhores participantes do quiz.
+                Quanto maior a pontuação, melhor a posição!
+            </p>
+
+            <!-- ESTATÍSTICAS DO RANKING -->
+            <div class="estatisticas">
+
+                <div class="estatistica">
+
+                    <span>
+                        Participações exibidas
+                    </span>
+
+                    <strong id="total-jogadores">
+                        0
+                    </strong>
+
+                </div>
+
+                <div class="estatistica">
+
+                    <span>
+                        Maior pontuação
+                    </span>
+
+                    <strong id="maior-pontuacao">
+                        0
+                    </strong>
+
+                </div>
+
+                <div class="estatistica">
+
+                    <span>
+                        Melhor participante
+                    </span>
+
+                    <strong id="melhor-jogador">
+                        ---
+                    </strong>
+
+                </div>
+
+            </div>
+
+            <!-- BOTÕES -->
+            <div class="acoes">
+
+                <button
+                    id="btn-atualizar"
+                    class="botao"
+                    type="button"
+                >
+                    Atualizar ranking
+                </button>
+
+                <a
+                    href="quiz.html"
+                    class="botao secundario"
+                >
+                    Jogar Quiz
+                </a>
+
+            </div>
+
+            <!-- TABELA DO RANKING -->
+            <div class="tabela-container">
+
+                <table>
+
+                    <thead>
+
+                        <tr>
+                            <th scope="col">
+                                Posição
+                            </th>
+
+                            <th scope="col">
+                                Participante
+                            </th>
+
+                            <th scope="col">
+                                Pontos
+                            </th>
+
+                            <th scope="col">
+                                Acertos
+                            </th>
+
+                            <th scope="col">
+                                Tempo
+                            </th>
+
+                            <th scope="col">
+                                Data
+                            </th>
+                        </tr>
+
+                    </thead>
+
+                    <!-- Dados carregados pelo ranking.js -->
+                    <tbody id="corpo-ranking">
+                    </tbody>
+
+                </table>
+
+            </div>
+
+            <!-- MENSAGENS DO RANKING -->
+            <p
+                id="mensagem-ranking"
+                aria-live="polite"
+                role="status"
+            ></p>
+
+        </section>
+
+    </main>
+
+    <!-- RODAPÉ -->
+    <footer>
+
+        <p>
+            Cyber Segurança | Ranking Interativo
+        </p>
+
+    </footer>
+
+</body>
+</html>

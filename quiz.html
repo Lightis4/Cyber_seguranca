@@ -1,0 +1,111 @@
+
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Quiz | Cyber Segurança</title>
+    <link rel="stylesheet" href="extras.css">
+    <script src="quiz.js" defer></script>
+</head>
+<body>
+    <header class="cabecalho">
+        <h1>Cyber Segurança</h1>
+        <nav>
+            <a href="cyber.html">Início</a>
+            <a href="quiz.html" class="ativo">Quiz</a>
+            <a href="ranking.html">Ranking</a>
+            <a href="qrcode.html">QR Code</a>
+        </nav>
+    </header>
+
+    <main class="container">
+        <section class="painel" id="tela-inicial">
+            <h2>Desafio de Cibersegurança</h2>
+            <p>
+                Teste seus conhecimentos sobre segurança digital!
+                Responda corretamente e seja rápido para ganhar
+                mais pontos.
+            </p>
+
+            <div class="regras">
+                <p>10 perguntas sobre cibersegurança</p>
+                <p>20 segundos por pergunta</p>
+                <p>100 pontos por resposta correta</p>
+                <p>5 pontos extras por segundo restante</p>
+            </div>
+
+            <label for="nome">Nome do participante</label>
+            <input
+                type="text"
+                id="nome"
+                maxlength="30"
+                placeholder="Digite seu nome"
+                autocomplete="nickname"
+            >
+
+            <button id="btn-iniciar" class="botao">
+                Iniciar Quiz
+            </button>
+        </section>
+
+        <section class="painel oculto" id="tela-quiz">
+            <div class="informacoes-quiz">
+                <span id="numero-pergunta">Pergunta 1 de 10</span>
+                <span id="pontuacao">Pontos: 0</span>
+            </div>
+
+            <div class="cronometro">
+                Tempo restante:
+                <strong id="tempo">20</strong>s
+            </div>
+
+            <div class="barra-tempo">
+                <div id="progresso-tempo"></div>
+            </div>
+
+            <h2 id="pergunta"></h2>
+
+            <div id="alternativas" class="alternativas"></div>
+
+            <p id="mensagem" aria-live="polite"></p>
+
+            <button
+                id="btn-proxima"
+                class="botao oculto"
+            >
+                Próxima pergunta
+            </button>
+        </section>
+
+        <section class="painel oculto" id="tela-resultado">
+            <h2>Quiz finalizado!</h2>
+
+            <p id="resultado-nome"></p>
+
+            <div class="resultado-pontos">
+                <span>Pontuação final</span>
+                <strong id="resultado-pontos">0</strong>
+            </div>
+
+            <p id="resultado-acertos"></p>
+            <p id="resultado-tempo"></p>
+            <p id="resultado-status"></p>
+
+            <div class="acoes">
+                <button id="btn-reiniciar" class="botao">
+                    Jogar novamente
+                </button>
+
+                <a href="ranking.html" class="botao secundario">
+                    Ver Ranking
+                </a>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <p>Cyber Segurança | Quiz Interativo</p>
+    </footer>
+</body>
+</html>
