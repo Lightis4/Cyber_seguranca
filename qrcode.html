@@ -1,0 +1,94 @@
+
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>QR Code | Cyber Segurança</title>
+
+    <link rel="stylesheet" href="extras.css">
+
+    <script
+        src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js"
+        defer>
+    </script>
+
+    <script src="qrcode.js" defer></script>
+</head>
+<body>
+    <header class="cabecalho">
+        <h1>Cyber Segurança</h1>
+
+        <nav>
+            <a href="cyber.html">Início</a>
+            <a href="quiz.html">Quiz</a>
+            <a href="ranking.html">Ranking</a>
+            <a href="qrcode.html" class="ativo">QR Code</a>
+        </nav>
+    </header>
+
+    <main class="container">
+        <section class="painel">
+            <h2>Acesse pelo celular</h2>
+
+            <p>
+                Escaneie o QR Code abaixo para acessar
+                o site de cibersegurança.
+            </p>
+
+            <div class="qr-area">
+                <div id="qr-site" class="qr-imagem"></div>
+
+                <p id="link-site"></p>
+
+                <button id="btn-baixar-site" class="botao">
+                    Baixar QR Code
+                </button>
+            </div>
+        </section>
+
+        <section class="painel">
+            <h2>Gerador de QR Code</h2>
+
+            <p>
+                Digite o endereço de um site para gerar
+                um QR Code personalizado.
+            </p>
+
+            <label for="url-personalizada">
+                Endereço do site
+            </label>
+
+            <input
+                type="url"
+                id="url-personalizada"
+                placeholder="https://exemplo.com"
+            >
+
+            <button id="btn-gerar" class="botao">
+                Gerar QR Code
+            </button>
+
+            <div class="qr-area">
+                <div
+                    id="qr-personalizado"
+                    class="qr-imagem"
+                ></div>
+
+                <button
+                    id="btn-baixar-personalizado"
+                    class="botao secundario oculto"
+                >
+                    Baixar QR Code
+                </button>
+            </div>
+
+            <p id="mensagem-qr" aria-live="polite"></p>
+        </section>
+    </main>
+
+    <footer>
+        <p>Cyber Segurança | Gerador de QR Code</p>
+    </footer>
+</body>
+</html>
