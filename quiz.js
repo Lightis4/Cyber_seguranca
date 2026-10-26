@@ -461,7 +461,7 @@ async function finalizarQuiz() {
         `Tempo total: ${resultado.tempoTotal} segundos`;
 
     resultadoStatus.textContent =
-        "Resultado salvo no Neon PostgreSQL!";
+        "Resultado salvo agora podera acessar o raking";
 
     partidaId = null;
 }
